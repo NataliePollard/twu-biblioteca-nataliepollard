@@ -13,4 +13,8 @@ public class BookTest {
     public void testToString() throws Exception {
         assertEquals("Harry Potter\t\tJ K Rowling\t1997",harryPotter.toString());
     }
+    @Test
+    public void testGetTitle() throws Exception{
+        assertEquals("Harry Potter", harryPotter.getTitle());
+    }
 }

@@ -17,23 +17,54 @@ public class BibliotecaApp {
         System.out.println("Select one of the following options:");
         System.out.println("List Books");
         System.out.println("Quit");
+        System.out.println("Checkout Book");
         while(true) {
             String inputString = getUserInput();
-            if(inputString.equals("List Books")) {
-                listBooks();
-            }
-            else if(inputString.equals("Quit")) {
-                System.exit(0);
-            }
 
-            else {
-                System.out.println("Select a valid option!");
+            if (inputString != null) {
+                switch(inputString.toLowerCase()) {
+                    case "list books":
+                        listBooks();
+                        break;
+                    case "quit":
+                        System.exit(0);
+                        break;
+                    case "checkout book":
+                        checkoutBook();
+                        break;
+                    case "return book":
+                        returnBook();
+                        break;
+                    default:
+                        System.out.println("Select a valid option!");
+                        break;
+                }
             }
-
         }
     }
 
-    public static String getUserInput(){
+    public static void returnBook
+
+    private static void checkoutBook() {
+        System.out.println("Enter the title of the book you wish to check out");
+        String bookTitle = getUserInput();
+        boolean bookRemoved = false;
+        for(int i = 0; i < books.size(); i++){
+            String bookTit = ((Book) books.get(i)).getTitle();
+            if(bookTitle.equals(bookTit)) {
+                books.remove(i);
+                System.out.println("Thank you! Enjoy the book");
+                bookRemoved = true;
+                break;
+            }
+        }
+        if(bookRemoved == false) {
+            System.out.println("That book is not available");
+        }
+
+    }
+
+    private static String getUserInput(){
         String inputLine = null;
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
@@ -47,7 +78,7 @@ public class BibliotecaApp {
         return inputLine;
     }
 
-    public static void listBooks() {
+    private static void listBooks() {
         for(int i = 0; i < books.size(); i++) {
             System.out.println(books.get(i));
         }

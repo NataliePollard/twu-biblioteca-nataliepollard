@@ -4,17 +4,24 @@ package com.twu.biblioteca;
  * Created by nataliepollard on 12/20/15.
  */
 public class Book {
-    private String name;
+    private String title;
     private String author;
     private int yearPublished;
+
+
+
     public Book (String name, String author, int yearPublished) {
-        this.name = name;
+        this.title = name;
         this.author = author;
         this.yearPublished = yearPublished;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     @Override
     public String toString() {
-        return(name + "\t\t" + author + "\t" + yearPublished);
+        return(title + "\t\t" + author + "\t" + yearPublished);
     }
 }
