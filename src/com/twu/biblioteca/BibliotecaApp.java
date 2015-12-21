@@ -16,11 +16,16 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca!");
         System.out.println("Select one of the following options:");
         System.out.println("List Books");
+        System.out.println("Quit");
         while(true) {
             String inputString = getUserInput();
             if(inputString.equals("List Books")) {
                 listBooks();
             }
+            else if(inputString.equals("Quit")) {
+                System.exit(0);
+            }
+
             else {
                 System.out.println("Select a valid option!");
             }
