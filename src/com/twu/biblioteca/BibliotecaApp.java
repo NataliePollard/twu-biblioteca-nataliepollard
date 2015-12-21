@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.LinkedList;
-
+import java.io.*;
 
 public class BibliotecaApp {
     private static LinkedList books;
@@ -14,7 +14,35 @@ public class BibliotecaApp {
         books.add(lotR);
 
         System.out.println("Welcome to Biblioteca!");
-        System.out.println(books);
+        System.out.println("Select one of the following options:");
+        System.out.println("List Books");
+        while(true) {
+            String inputString = getUserInput();
+            if(inputString.equals("List Books")) {
+                listBooks();
+            }
+
+        }
+    }
+
+    public static String getUserInput(){
+        String inputLine = null;
+        try {
+            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+            inputLine = is.readLine();
+            if(inputLine.length() == 0)
+                return null;
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
+        }
+
+        return inputLine;
+    }
+
+    public static void listBooks() {
+        for(int i = 0; i < books.size(); i++) {
+            System.out.println(books.get(i));
+        }
     }
 
 }
