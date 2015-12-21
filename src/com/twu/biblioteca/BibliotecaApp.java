@@ -4,14 +4,11 @@ import java.util.LinkedList;
 import java.io.*;
 
 public class BibliotecaApp {
-    private static LinkedList books;
+
 
     public static void main(String[] args) {
-        books = new LinkedList();
-        Book harryPotter = new Book("Harry Potter", "J K Rowling", 1997);
-        Book lotR = new Book("The Lord of the Rings", "J R R Tolkein", 1954);
-        books.add(harryPotter);
-        books.add(lotR);
+
+        Library myLibrary = new Library();
 
         System.out.println("Welcome to Biblioteca!");
         System.out.println("Select one of the following options:");
@@ -24,17 +21,18 @@ public class BibliotecaApp {
             if (inputString != null) {
                 switch(inputString.toLowerCase()) {
                     case "list books":
-                        listBooks();
+                        System.out.println(myLibrary.listBooks());
                         break;
                     case "quit":
                         System.exit(0);
                         break;
-                    case "checkout book":
-                        checkoutBook();
+                    case "checkout book": {
+                        System.out.println("Enter the title of the book you wish to check out");
+                        String bookTitle = getUserInput();
+                        System.out.println(myLibrary.checkoutBook(bookTitle));
                         break;
-                    case "return book":
-                        returnBook();
-                        break;
+                    }
+
                     default:
                         System.out.println("Select a valid option!");
                         break;
@@ -43,28 +41,7 @@ public class BibliotecaApp {
         }
     }
 
-    public static void returnBook
-
-    private static void checkoutBook() {
-        System.out.println("Enter the title of the book you wish to check out");
-        String bookTitle = getUserInput();
-        boolean bookRemoved = false;
-        for(int i = 0; i < books.size(); i++){
-            String bookTit = ((Book) books.get(i)).getTitle();
-            if(bookTitle.equals(bookTit)) {
-                books.remove(i);
-                System.out.println("Thank you! Enjoy the book");
-                bookRemoved = true;
-                break;
-            }
-        }
-        if(bookRemoved == false) {
-            System.out.println("That book is not available");
-        }
-
-    }
-
-    private static String getUserInput(){
+    public static String getUserInput(){
         String inputLine = null;
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
@@ -77,11 +54,4 @@ public class BibliotecaApp {
 
         return inputLine;
     }
-
-    private static void listBooks() {
-        for(int i = 0; i < books.size(); i++) {
-            System.out.println(books.get(i));
-        }
-    }
-
 }
