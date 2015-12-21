@@ -22,6 +22,24 @@ public class Book {
 
     @Override
     public String toString() {
-        return(title + "\t\t" + author + "\t" + yearPublished);
+        String displayTitle =  pad(title, 30);
+        String displayAuthor = pad(author, 20);
+
+        return(displayTitle + displayAuthor + yearPublished);
+    }
+
+    private String pad(String s, int maxLength) {
+        int sLength = s.length();
+        if(sLength > maxLength)
+        {
+            s = s.substring(0 , maxLength - 4);
+            s += "... ";
+        }
+        else{
+            for( int i = 0; i < (maxLength - sLength); i++) {
+                s += " ";
+            }
+        }
+        return s;
     }
 }

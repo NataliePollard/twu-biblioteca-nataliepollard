@@ -15,6 +15,7 @@ public class BibliotecaApp {
         System.out.println("List Books");
         System.out.println("Quit");
         System.out.println("Checkout Book");
+        System.out.println("Return Book");
         while(true) {
             String inputString = getUserInput();
 
@@ -32,6 +33,12 @@ public class BibliotecaApp {
                         System.out.println(myLibrary.checkoutBook(bookTitle));
                         break;
                     }
+                    case "return book": {
+                        System.out.println("Enter the title of the book you wish to return");
+                        String bookTitle = getUserInput();
+                        System.out.println(myLibrary.returnBook(bookTitle));
+                        break;
+                    }
 
                     default:
                         System.out.println("Select a valid option!");
@@ -41,7 +48,7 @@ public class BibliotecaApp {
         }
     }
 
-    public static String getUserInput(){
+    private static String getUserInput(){
         String inputLine = null;
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
