@@ -8,11 +8,13 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         books = new LinkedList();
-        books.add("Harry Potter");
-        books.add("Lord of the Rings");
+        Book harryPotter = new Book("Harry Potter", "J K Rowling", 1997);
+        Book lotR = new Book("The Lord of the Rings", "J R R Tolkein", 1954);
+        books.add(harryPotter);
+        books.add(lotR);
 
         System.out.println("Welcome to Biblioteca!");
         System.out.println(books);
     }
-    
+
 }
