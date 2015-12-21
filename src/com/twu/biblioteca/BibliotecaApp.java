@@ -21,6 +21,9 @@ public class BibliotecaApp {
             if(inputString.equals("List Books")) {
                 listBooks();
             }
+            else {
+                System.out.println("Select a valid option!");
+            }
 
         }
     }
